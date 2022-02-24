@@ -1,0 +1,65 @@
+<html><head>
+        
+<style>
+  /* need this to simulate <html>, dom-to-image cant clone it  */
+  .wrapper {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+<style>body {
+    font-family: sans-serif;
+}
+
+h1 {
+    background-color: limegreen;
+    padding: 10px;
+}
+
+img {
+    height: 200px;
+}
+
+p, ul {
+    font-size: 20px;
+}
+
+ul {
+    list-style: url("https://mars.algoritmika.org/uploads/2021/01/%D0%BD%D0%BE%D1%82%D0%B0_0_1610638133.svg");
+}</style>
+<script type="text/javascript" src="/singlepage/root/dom-to-image/dom-to-image.min.js"></script>
+
+      </head>
+      <body><div class="wrapper">
+        
+    
+        <main>
+            <h1>Music shopping</h1>
+            <img src="https://mars.algoritmika.org/uploads/2021/01/animal-1298913_1280_0_1610637546.png"><img src="https://mars.algoritmika.org/uploads/2021/01/silhouette-3309171_1280_0_1610637545.png">
+            <p>Музыкальное оборудование для вас:</p>
+                <ul>
+                    <li>музыкальные инструменты</li>
+                    <li>аксессуары</li>
+                    <li>звук, микрофоны</li>
+                    <li>концертное оборудование</li>
+                    <li>музыкальная литература</li>
+                </ul>
+        </main>
+    
+
+      </div>
+      <script defer="">
+        window.onload = function() {
+          var el = window.document.querySelector('.wrapper');
+          window.domtoimage.toPng(el).then(function (dataUrl) {
+            var data = { dataUrl };
+            var event = new CustomEvent('html-image-ready', { detail: data });
+            window.parent.document.dispatchEvent(event);
+          });
+
+          window.addEventListener('scroll-window', (evt) => {
+            window.scrollTo(evt.detail.scrollLeft, evt.detail.scrollTop);
+          })
+        };
+      </script>
+    </body></html>
